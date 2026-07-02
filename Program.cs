@@ -45,41 +45,23 @@ string[] storyWords = originalStory.Split(' ');
             {
                 i++;
                 replaceable += storyWords[i] + " ";
-                
+                //Issue with periods in the story and code.
+                //I could do a only replace up to the length of the period. 
+              /*  if (storyWords[i].Contains('.'))
+                {
+                    storyWo
+                } */
             }
-          
             replaceable = replaceable.Replace("(", "").Replace(")", "");
-            Console.Write($"Give me a(n) {replaceable}");
+            Console.Write($"Give me a(n) {replaceable}:");
             replaceable = ""; 
             string userInput = Console.ReadLine();
             newStory += userInput + " ";
-            
         }
-
-
-/*
-    if (word.Contains('('))
-    {
-        //Add word
-        //Add following words until ")"
-
-        int start = word.IndexOf('(');
-        int end = word.IndexOf(')');
-        
-        string placeholder = word.Substring(start + 1, end - start - 1); //Gets rid of "()" = -/+ 1
-        //"(adjective)" and others now are a variable and replaceable
-        Console.WriteLine($"Give me a(n) {placeholder}");
-        string userInput = Console.ReadLine();
-        string filledWord = word.Replace($"{placeholder}", userInput);
-        newStory += filledWord + " ";
-    }
-    */
     else
     {
         newStory += storyWords[i] + " ";
     }
     }
     Console.Write(newStory);
-
-
 }
