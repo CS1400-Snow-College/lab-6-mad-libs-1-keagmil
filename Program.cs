@@ -33,6 +33,7 @@ string[] storyWords = originalStory.Split(' ');
 {
     string newStory = ""; //I was getting issues here. By assigning it an empty value we essentiall can buidl the story again word by word and get around it not being assigned a variable.
     string replaceable = "";
+    string symbols ="";
 
     //foreach (string word in storyWords)
 
@@ -43,22 +44,30 @@ string[] storyWords = originalStory.Split(' ');
             replaceable += storyWords[i] + " "; 
             while (!storyWords[i].Contains(')'))
             {
-              //  int end = storyWords[i].IndexOf(')');
-               // int start = i;
                 i++;
-              //  storyWords[i].Substring(0, storyWords[i].Length - 1);
                 replaceable += storyWords[i] + " ";
+
+              
+            }
+            if (storyWords[i].Contains('.'))
+            {
+                symbols = ".";
+            }
+            else
+            {
+                symbols = " ";
             }
             replaceable = replaceable.Replace("(", "").Replace(")", "").Replace('.', ' ');
             Console.Write($"Give me a(n) {replaceable}:");
             replaceable = ""; 
             string userInput = Console.ReadLine();
-            newStory += userInput + " ";
+            newStory += userInput + symbols + " ";
         }
-    else
-    {
-        newStory += storyWords[i] + " ";
+        else
+        {
+            newStory += storyWords[i] + " ";
+        }
     }
-    }
+    
     Console.Write(newStory);
 }
