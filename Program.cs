@@ -44,13 +44,14 @@ string[] storyWords = originalStory.Split(' ');
             while (!storyWords[i].Contains(')'))
             {
                 i++;
-                replaceable += storyWords[i] + " ";
-                //Issue with periods in the story and code.
-                //I could do a only replace up to the length of the period. 
-              /*  if (storyWords[i].Contains('.'))
+                int wordEnd = storyWords[i].IndexOf(')');
+                int wordStart = i;
+                int savePeriod = wordEnd - wordStart;
+                replaceable += savePeriod;
+                /*if (storyWords[i].Contains('.'))
                 {
-                    storyWo
-                } */
+                    replace
+                }*/
             }
             replaceable = replaceable.Replace("(", "").Replace(")", "");
             Console.Write($"Give me a(n) {replaceable}:");
