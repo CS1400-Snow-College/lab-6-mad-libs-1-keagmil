@@ -43,17 +43,13 @@ string[] storyWords = originalStory.Split(' ');
             replaceable += storyWords[i] + " "; 
             while (!storyWords[i].Contains(')'))
             {
+              //  int end = storyWords[i].IndexOf(')');
+               // int start = i;
                 i++;
-                int wordEnd = storyWords[i].IndexOf(')');
-                int wordStart = i;
-                int savePeriod = wordEnd - wordStart;
-                replaceable += savePeriod;
-                /*if (storyWords[i].Contains('.'))
-                {
-                    replace
-                }*/
+              //  storyWords[i].Substring(0, storyWords[i].Length - 1);
+                replaceable += storyWords[i] + " ";
             }
-            replaceable = replaceable.Replace("(", "").Replace(")", "");
+            replaceable = replaceable.Replace("(", "").Replace(")", "").Replace('.', ' ');
             Console.Write($"Give me a(n) {replaceable}:");
             replaceable = ""; 
             string userInput = Console.ReadLine();
