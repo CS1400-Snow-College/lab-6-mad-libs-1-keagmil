@@ -41,12 +41,19 @@ string[] storyWords = originalStory.Split(' ');
         if (storyWords[i].Contains('('))
         {
             replaceable += storyWords[i] + " "; 
-            if (!storyWords[i].Contains(')'))
+            while (!storyWords[i].Contains(')'))
             {
                 i++;
                 replaceable += storyWords[i] + " ";
+                
             }
+          
+            replaceable = replaceable.Replace("(", "").Replace(")", "");
             Console.Write($"Give me a(n) {replaceable}");
+            replaceable = ""; 
+            string userInput = Console.ReadLine();
+            newStory += userInput + " ";
+            
         }
 
 
